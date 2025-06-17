@@ -1,0 +1,52 @@
+
+
+1 - Um projeto de avaliação de recepção de aluno 
+
+Modelo - Jogo 
+ 
+ Testes a ser aplicados
+ 
+   Testes de noções gerais 5
+   testes de alfabeto 5
+   teste de matemática 5  
+---------------------------------------------------------------
+
+Passos inicio do jogo 
+
+1 - Tela inicial 
+    Start
+	 Nome do aluno (professor vai inserir)
+
+2 - interação do aluno
+      Alfabeto
+	  
+	   1 - Ordenar o nome
+	   2 - selecione somente as vogais
+	   3 - ordene os balões em ordem crescente do alfabeto
+	   4 - completar as palavras
+	   5 - selecionar a figura
+      
+      Matemática
+       
+	   1 - Resolva as somas
+	   2 - Resolva as subtrações
+	   3 - Odene os numeros em ordem crescente
+	   4 - Complete os números 
+	   5 - selecione a quantidade
+	  
+      Noção espacial
+       
+       1 - encaixe as figuras geométricas
+       2 - teste orientação temporal - Ordene os acontecimentos
+       3 - Guarde as cores em suas devidas caixinhas
+       4 - Dê o osso pequeno para o cachorro pequeno e o osso grande para o chacorro grande
+       5 - Encaminhe a abelha até a colméia
+	   
+	 Fim de jogo ( apresenter o próximo apenas depois do "avançar")
+	   
+3 - Apresentar os resultados graficamente
+
+
+ 	   
+	  
+ 
