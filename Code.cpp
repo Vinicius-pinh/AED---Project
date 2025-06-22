@@ -6,6 +6,8 @@
 //**************Functions****************
 //---janela de entrada--------------
 void entradaDados(int x1, int y1, int corFundo, int corBorda, int qtdCarateres, char valorDigitado[]);
+//---Jogos--------------------------
+void jogo(int x1, int y1, int corFundo, int corBorda);
 //---Soma---------------------------
 int soma(int a, int b);
 //---subtrai------------------------
@@ -58,6 +60,15 @@ int main()
 
     }
     printf("nome %s, idade %d, pais %s", d1.nome, d1.idade, d1.paiOumae);
+
+    initwindow(largtel, alttel,"Jogo",0,0);
+    readimagefile("fundo.jpg",0,0,largtel,alttel);
+    jogo(150, 200,2, 7);
+    for (i=0; i<3; i){
+    printf("teste");
+    }
+
+
 
 
     /*printf("Digite os dados da criança\n\n");
@@ -119,4 +130,9 @@ void entradaDados(int x, int y, int corFundo, int corBorda, int qtdCarateres, ch
     }
     while (tecla != 13 && indice < qtdCarateres);
 // ENTER ou atingiu a quantidade de caracteres
+}
+
+void jogo(int x1, int y1, int corFundo, int corBorda){
+setfillstyle(1, 0);
+bar(x1, y1, x1+50, y1+30);
 }
