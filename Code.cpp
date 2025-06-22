@@ -2,6 +2,16 @@
 #include <string.h>
 #include <graphics.h>
 #include <stdlib.h>
+//**************Structs******************
+//***************************************
+//---struct para dados da criança---
+struct dados
+{
+    char nome[12];
+    int idade;
+    char paiOumae[12];
+};
+//---struct para o jogo de palavras---
 //***************************************
 //**************Functions****************
 //---janela de entrada--------------
@@ -12,25 +22,15 @@ void jogo(int x1, int y1, int corFundo, int corBorda);
 int soma(int a, int b);
 //---subtrai------------------------
 int subtrai(int a, int b);
-//**************Structs******************
-//---struct para dados da criança---
-struct dados
-{
-    char nome[12];
-    int idade;
-    char paiOumae[12];
-};
-//---struct para o jogo de palavras---
-struct alfabeto
-{
-    char palavras[15];
-};
 //***************************************
-//***************************************
+void palavras(char vet[5][10]);
 
 
 int main()
 {
+    char vetor[5][10];
+    palavras(vetor);
+    printf("%s, %s, %s, %s, %s", vetor[0], vetor[1], vetor[2], vetor[3], vetor[4]);
     //structs
     struct dados d1;
     //variables
@@ -81,13 +81,9 @@ int main()
     scanf("%s", d1.paiOuMae);
     */
 //printf("Nome %s\n, idade %d\n, pai ou mae %s\n", p1.nome, p1.idade, p1.paiOuMae);
-    struct alfabeto p[5];
 
-    strcpy(p[0].palavras, "Bola");
-    strcpy(p[1].palavras, "Correr");
-    strcpy(p[2].palavras, "Pipa");
-    strcpy(p[3].palavras, "Familia");
-    strcpy(p[4].palavras, "Escola");
+
+
 }
 
 void entradaDados(int x, int y, int corFundo, int corBorda, int qtdCarateres, char valorDigitado[])
@@ -135,4 +131,16 @@ void entradaDados(int x, int y, int corFundo, int corBorda, int qtdCarateres, ch
 void jogo(int x1, int y1, int corFundo, int corBorda){
 setfillstyle(1, 0);
 bar(x1, y1, x1+50, y1+30);
+}
+void palavras(char vet[5][10]) {
+    char vet1[5][10] = {
+        "Bola",
+        "Correr",
+        "Pipa",
+        "Familia",
+        "Escola"
+    };
+        for (int i = 0; i < 5; i++) {
+        strcpy(vet[i], vet1[i]);
+    }
 }
