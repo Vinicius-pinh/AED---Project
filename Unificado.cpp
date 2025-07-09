@@ -16,16 +16,16 @@ struct dados
 //--------------------- Declarações das funções------------------------------
 void entradaDados(int x1, int y1, int corFundo, int corBorda, int qtdCarateres, char valorDigitado[]);
 void jogo(int x1, int y1, int corFundo, int corBorda, char valor[10]);
-void palavras_com_descricoes(char vet[5][10], char descricoes[5][40]);
+void palavrasComDescricoes(char vet[5][10], char descricoes[5][40]);
 void nome(struct dados fd1[5]);
-void cria_matriz(struct dados fd1[5]);
+void criaMatriz(struct dados fd1[5]);
 void clique(int *x, int *y);
-void embaralha_campos(struct dados vet[5], struct dados meusDados);
-void desenha_colunas();
-void desenha_jogo_palavras(char palavras[5][10], char descricoes[5][40]);
-void embaralha_descricoes(char descricoes[5][40]);
+void embaralhaCampos(struct dados vet[5], struct dados meusDados);
+void desenhaColunas();
+void desenhaJogoPalavras(char palavras[5][10], char descricoes[5][40]);
+void embaralhaDescricoes(char descricoes[5][40]);
 void ligar_pontos(int x1, int y1, int x2, int y2);
-int encontrar_indice_descricao_original(char descricoes_embaralhadas[5][40], char descricoes_originais[5][40], int index);
+int encontrarIndiceDescricaoOriginal(char descricoes_embaralhadas[5][40], char descricoes_originais[5][40], int index);
 void atividadeSoma();
 void atividadeSubtracao();
 void atividadeOrdenar();
@@ -66,9 +66,9 @@ int main()
     initwindow(largtel, alttel, "Jogo 1 - Identifique seus dados", 0, 0);
     readimagefile("fundo.jpg", 0, 0, largtel, alttel);
     nome(d1);
-    embaralha_campos(d1, meusDados);
-    desenha_colunas();
-    cria_matriz(d1);
+    embaralhaCampos(d1, meusDados);
+    desenhaColunas();
+    criaMatriz(d1);
 
     int mx, my;
     int acertouNome = 0, acertouIdade = 0, acertouResponsavel = 0;
@@ -123,8 +123,8 @@ int main()
                 {
                     delay(800);
                     readimagefile("fundo.jpg", 0, 0, largtel, alttel);
-                    desenha_colunas();
-                    cria_matriz(d1);
+                    desenhaColunas();
+                    criaMatriz(d1);
                 }
             }
         }
@@ -149,10 +149,10 @@ int main()
     char descricoesOriginais[5][40];
     char descricoes[5][40];
 
-    palavras_com_descricoes(palavrasVet, descricoesOriginais);
+    palavrasComDescricoes(palavrasVet, descricoesOriginais);
     memcpy(descricoes, descricoesOriginais, sizeof(descricoes));
-    embaralha_descricoes(descricoes);
-    desenha_jogo_palavras(palavrasVet, descricoes);
+    embaralhaDescricoes(descricoes);
+    desenhaJogoPalavras(palavrasVet, descricoes);
 
     int px = 0, py = 0, sel1 = -1, sel2 = -1;
     int acertos = 0;
@@ -172,7 +172,7 @@ int main()
 
         if (sel1 != -1 && sel2 != -1)
         {
-            int indiceOriginal = encontrar_indice_descricao_original(descricoes, descricoesOriginais, sel2);
+            int indiceOriginal = encontrarIndiceDescricaoOriginal(descricoes, descricoesOriginais, sel2);
             int cor = (sel1 == indiceOriginal) ? GREEN : RED;
             if (sel1 == indiceOriginal && !acertosFeitos[sel1])
             {
@@ -186,10 +186,10 @@ int main()
             if (cor == RED)
             {
                 readimagefile("fundo.jpg", 0, 0, largtel, alttel);
-                palavras_com_descricoes(palavrasVet, descricoesOriginais);
+                palavrasComDescricoes(palavrasVet, descricoesOriginais);
                 memcpy(descricoes, descricoesOriginais, sizeof(descricoes));
-                embaralha_descricoes(descricoes);
-                desenha_jogo_palavras(palavrasVet, descricoes);
+                embaralhaDescricoes(descricoes);
+                desenhaJogoPalavras(palavrasVet, descricoes);
             }
 
             sel1 = sel2 = -1;
@@ -287,7 +287,7 @@ void nome(struct dados fd1[5])
     strcpy(fd1[4].paiOumae, "Augusta");
 }
 
-void embaralha_campos(struct dados vet[5], struct dados meusDados)
+void embaralhaCampos(struct dados vet[5], struct dados meusDados)
 {
     char nomes[5][12], pais[5][12];
     int idades[5];
@@ -320,7 +320,7 @@ void embaralha_campos(struct dados vet[5], struct dados meusDados)
     }
 }
 
-void cria_matriz(struct dados fd1[5])
+void criaMatriz(struct dados fd1[5])
 {
     int k;
     for (int i = 0; i < 5; i++)
@@ -341,7 +341,7 @@ void cria_matriz(struct dados fd1[5])
     }
 }
 
-void desenha_colunas()
+void desenhaColunas()
 {
     outtextxy(165, 170, "Nome");
     outtextxy(315, 170, "Idade");
@@ -355,7 +355,7 @@ void clique(int *x, int *y)
 }
 
 // Funções do Jogo 2
-void palavras_com_descricoes(char vet[5][10], char descricoes[5][40])
+void palavrasComDescricoes(char vet[5][10], char descricoes[5][40])
 {
     strcpy(vet[0], "Bola");
     strcpy(descricoes[0], "Objeto usado para jogar futebol");
@@ -369,7 +369,7 @@ void palavras_com_descricoes(char vet[5][10], char descricoes[5][40])
     strcpy(descricoes[4], "Atividade de se mover rapidamente");
 }
 
-void embaralha_descricoes(char descricoes[5][40])
+void embaralhaDescricoes(char descricoes[5][40])
 {
     for (int i = 4; i > 0; i--)
     {
@@ -381,7 +381,7 @@ void embaralha_descricoes(char descricoes[5][40])
     }
 }
 
-int encontrar_indice_descricao_original(char descricoes_embaralhadas[5][40], char descricoes_originais[5][40], int index)
+int encontrarIndiceDescricaoOriginal(char descricoes_embaralhadas[5][40], char descricoes_originais[5][40], int index)
 {
     for (int i = 0; i < 5; i++)
     {
@@ -391,7 +391,7 @@ int encontrar_indice_descricao_original(char descricoes_embaralhadas[5][40], cha
     return -1;
 }
 
-void desenha_jogo_palavras(char palavras[5][10], char descricoes[5][40])
+void desenhaJogoPalavras(char palavras[5][10], char descricoes[5][40])
 {
     setbkcolor(WHITE);
     setcolor(BLACK);
